@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 import styles from './Contact.module.css';
 
 const Contact = ({ name, number, handleDeleteContact }) => (
@@ -19,9 +19,9 @@ const Contact = ({ name, number, handleDeleteContact }) => (
 );
 
 Contact.propTypes = {
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  handleDeleteContact: PropTypes.func.isRequired,
+  name: T.string.isRequired,
+  number: T.string.isRequired,
+  handleDeleteContact: T.func.isRequired,
 };
 
 export default Contact;

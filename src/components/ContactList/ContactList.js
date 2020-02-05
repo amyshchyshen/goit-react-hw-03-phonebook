@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 import Contact from '../Contact/Contact';
 import styles from './ContactList.module.css';
 
@@ -18,14 +18,14 @@ const ContactList = ({ contacts, handleDeleteContact }) => (
 );
 
 ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
+  contacts: T.arrayOf(
+    T.shape({
+      id: T.string,
+      name: T.string,
+      number: T.string,
     }).isRequired,
   ).isRequired,
-  handleDeleteContact: PropTypes.func.isRequired,
+  handleDeleteContact: T.func.isRequired,
 };
 
 export default ContactList;

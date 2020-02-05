@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 import shortid from 'shortid';
 import styles from './ContactForm.module.css';
 
 class ContactForm extends Component {
   static propTypes = {
-    handleAddContact: PropTypes.func.isRequired,
+    handleAddContact: T.func.isRequired,
   };
 
   state = {
