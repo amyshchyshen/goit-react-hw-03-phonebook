@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
-import shortid from 'shortid';
+import constants from './constants';
 import styles from './ContactForm.module.css';
+
+const INIT_STATE = {
+  name: '',
+  number: '',
+};
 
 class ContactForm extends Component {
   static propTypes = {
     handleAddContact: T.func.isRequired,
   };
 
-  state = {
-    name: '',
-    number: '',
-  };
-
-  inputIds = {
-    nameId: shortid.generate(),
-    numberId: shortid.generate(),
-  };
+  state = { ...INIT_STATE };
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -34,15 +31,12 @@ class ContactForm extends Component {
   };
 
   resetForm = () => {
-    this.setState({
-      name: '',
-      number: '',
-    });
+    this.setState({ ...INIT_STATE });
   };
 
   render() {
     const { name, number } = this.state;
-    const { nameId, numberId } = this.inputIds;
+    const { nameId, numberId } = constants;
 
     return (
       <form className={styles.contactForm} onSubmit={this.handleSubmit}>

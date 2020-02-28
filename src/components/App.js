@@ -46,8 +46,13 @@ class App extends Component {
       number,
     };
 
-    if (newContact.name.trim() === '' || newContact.number.trim() === '') {
+    if (!newContact.name || !newContact.number) {
       return notyf.error('Please fill out the form');
+    }
+    if (
+      !newContact.number.match(/^(\+38|\+3)?[\s-]?(\(?[\d]*\))?[\d\s\- ]*$/)
+    ) {
+      return notyf.error('Wrong number format');
     }
 
     const matchingContact = this.findMatchingContact(contacts, newContact.name);
@@ -67,10 +72,12 @@ class App extends Component {
   };
 
   deleteContact = id => {
+    const { state } = this;
+    const newConstacts = state.contacts.filter(contact => contact.id !== id);
     this.setState(
-      prevState => ({
-        contacts: prevState.contacts.filter(contact => contact.id !== id),
-      }),
+      {
+        contacts: newConstacts,
+      },
       () => notyf.success('Contact deleted'),
     );
   };
